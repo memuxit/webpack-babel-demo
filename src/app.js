@@ -1,4 +1,4 @@
-import "./styles/colors.scss";
+import "./styles/styles.scss";
 import fetchService from "./services/fetch.service";
 import browserFunction from "./functions/get-browser";
 import functions from "./functions/generate-table"

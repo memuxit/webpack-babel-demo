@@ -1,6 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Karla:weight@400;700&display=swap");
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../assets/Ubuntu-Regular.ttf') format('ttf');
+  font-style: normal;
+}
 
-$font: "Karla", sans-serif;
+$font: 'Ubuntu', sans-serif;
 $primary-color: #3e6f9e;
 
 body {

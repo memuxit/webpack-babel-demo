@@ -1,8 +1,6 @@
 import {detect} from "detect-browser";
 const result = detect();
 
-const baseUrl = 'https://reqres.in/api';
-
 const getBrowserAndVersion = _ => {
     let browser = {name: 'Not supported', version: '0'};
     if (result.name.includes('chrome')) {
@@ -20,6 +18,5 @@ const getBrowserAndVersion = _ => {
 };
 
 export {
-    baseUrl,
     getBrowserAndVersion
 }

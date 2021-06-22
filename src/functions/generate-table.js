@@ -1,3 +1,5 @@
+import avatar from "../assets/fox-avatar.jpg";
+
 export default {
     generateTableHead(table, data) {
         const thead = table.createTHead();
@@ -41,7 +43,7 @@ export default {
                 let value;
                 if (key === 'avatar') {
                     value = document.createElement('img');
-                    value.src = 'https://i1.sndcdn.com/avatars-000559670430-qptgz9-t500x500.jpg';
+                    value.src = avatar;
                     cell.classList.add('avatar');
                 } else {
                     value = document.createTextNode(user[key]);

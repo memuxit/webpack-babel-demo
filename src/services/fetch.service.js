@@ -1,8 +1,8 @@
-import {baseUrl} from "../helpers/utils";
+import {environment} from "../environments/environment";
 
 export default {
   getUsers() {
-    const url = new URL(`${baseUrl}/users`);
+    const url = new URL(`${environment.API_URL}/users`);
     url.searchParams.set('page', '1');
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -12,7 +12,7 @@ export default {
 
   saveUser(user) {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST',  `${baseUrl}/users`, true);
+    xhr.open('POST',  `${environment.API_URL}/users`, true);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.send(JSON.stringify(user));
     return xhr;
