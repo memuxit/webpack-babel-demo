@@ -16,23 +16,37 @@ export default {
                 let row = table.insertRow();
                 for (let key in element) {
                     let cell = row.insertCell();
-                    let text = document.createTextNode(element[key]);
-                    cell.appendChild(text);
+                    let value;
+                    if (key === 'avatar') {
+                        value = document.createElement('img');
+                        value.src = element[key];
+                        cell.classList.add('avatar');
+                    } else {
+                        value = document.createTextNode(element[key]);
+                    }
+                    cell.appendChild(value);
                 }
             }
         } else {
             const row = table.insertRow();
             const user = {
                 id: data.id,
-                email: '',
+                email: 'fox.mccloud@starfox.com',
                 first_name: data.name,
                 last_name: data.job,
                 avatar: data.createdAt
             };
             for (let key in user) {
                 let cell = row.insertCell();
-                let text = document.createTextNode(user[key]);
-                cell.appendChild(text);
+                let value;
+                if (key === 'avatar') {
+                    value = document.createElement('img');
+                    value.src = 'https://i1.sndcdn.com/avatars-000559670430-qptgz9-t500x500.jpg';
+                    cell.classList.add('avatar');
+                } else {
+                    value = document.createTextNode(user[key]);
+                }
+                cell.appendChild(value);
             }
         }
     },

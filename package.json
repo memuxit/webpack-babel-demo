@@ -25,6 +25,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "core-js": "^3.14.0"
+    "core-js": "^3.14.0",
+    "detect-browser": "^5.2.0"
   }
 }

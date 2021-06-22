@@ -1,8 +1,12 @@
 import "./styles/colors.scss";
 import fetchService from "./services/fetch.service";
+import browserFunction from "./functions/get-browser";
 import functions from "./functions/generate-table"
 
+const element = document.getElementById('browser');
 const table = document.querySelector('table');
+
+browserFunction.showBrowser(element);
 
 const get = fetchService.getUsers();
 get.onload = function () {
@@ -13,7 +17,7 @@ get.onload = function () {
 
 const user = {
     name: 'Fox McCloud',
-    job: 'pilot'
+    job: 'Pilot'
 };
 
 const post = fetchService.saveUser(user);
