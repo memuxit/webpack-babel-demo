@@ -1,20 +1,21 @@
+import "whatwg-fetch";
 import {environment} from "../environments/environment";
 
 export default {
-  getUsers() {
-    const url = new URL(`${environment.API_URL}/users`);
-    url.searchParams.set('page', '1');
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.send();
-    return xhr;
-  },
+    async getUsers() {
+        return window.fetch(`${environment.API_URL}/users?page=2`)
+            .then(res => res.json());
+    },
 
-  saveUser(user) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST',  `${environment.API_URL}/users`, true);
-    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    xhr.send(JSON.stringify(user));
-    return xhr;
-  },
+    async saveUser(user) {
+        return window.fetch(`${environment.API_URL}/users`, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json());
+    },
 };

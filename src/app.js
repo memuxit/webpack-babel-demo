@@ -3,25 +3,22 @@ import fetchService from "./services/fetch.service";
 import browserFunction from "./functions/get-browser";
 import functions from "./functions/generate-table"
 
-const element = document.getElementById('browser');
-const table = document.querySelector('table');
+const start = async () => {
+    const element = document.getElementById('browser');
+    const table = document.querySelector('table');
+    const user = {
+        name: 'Fox McCloud',
+        job: 'Pilot'
+    };
 
-browserFunction.showBrowser(element);
+    browserFunction.showBrowser(element);
 
-const get = fetchService.getUsers();
-get.onload = function () {
-    const response = JSON.parse(get.response);
-    functions.generateTableHead(table, Object.keys(response.data[0]));
-    functions.fillTable(table, response.data);
-};
+    const users = await fetchService.getUsers();
+    functions.generateTableHead(table, Object.keys(users.data[0]));
+    functions.fillTable(table, users.data);
 
-const user = {
-    name: 'Fox McCloud',
-    job: 'Pilot'
-};
+    const newUser = await fetchService.saveUser(user);
+    functions.fillTable(table, newUser);
+}
 
-const post = fetchService.saveUser(user);
-post.onload = function () {
-    const response = JSON.parse(post.response);
-    functions.fillTable(table, response);
-};
+start();

@@ -2,7 +2,10 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: "./src/app.js",
+    entry: [
+        'whatwg-fetch',
+        './src/app.js'
+    ],
     output: {
         filename: "[name].js",
         path: path.resolve(__dirname, "dist"),
@@ -37,6 +40,9 @@ module.exports = {
             template: "./index.html",
         }),
     ],
+    experiments: {
+        topLevelAwait: true,
+    },
     target: ['web', 'es5'],
     mode: "development",
 };
