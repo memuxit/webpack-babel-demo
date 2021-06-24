@@ -13,7 +13,7 @@ const start = async () => {
 
     browserFunction.showBrowser(element);
 
-    const users = await fetchService.getUsers();
+    const users = await fetchService.getUsers(1);
     functions.generateTableHead(table, Object.keys(users.data[0]));
     functions.fillTable(table, users.data);
 

@@ -2,13 +2,13 @@ import "whatwg-fetch";
 import {environment} from "../environments/environment";
 
 export default {
-    async getUsers() {
-        return window.fetch(`${environment.API_URL}/users?page=2`)
+    async getUsers(page) {
+        return await window.fetch(`${environment.API_URL}/users?page=${page}`)
             .then(res => res.json());
     },
 
     async saveUser(user) {
-        return window.fetch(`${environment.API_URL}/users`, {
+        return await window.fetch(`${environment.API_URL}/users`, {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
