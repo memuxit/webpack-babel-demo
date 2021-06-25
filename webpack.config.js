@@ -1,7 +1,7 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 
-const libraryName = 'digital-gate-v1';
+const libraryName = 'digital-gate-v2';
 const outputFile = `${libraryName}.min.js`;
 
 module.exports = {
