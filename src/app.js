@@ -1,7 +1,12 @@
 import "./styles/styles.scss";
 import fetchService from "./services/fetch.service";
 import browserFunction from "./functions/get-browser";
-import functions from "./functions/generate-table"
+import functions from "./functions/generate-table";
+import TodoList from "./lib/todo-list";
+import ListItem from "./lib/list-item";
+
+/*customElements.define('todo-list', TodoList);
+customElements.define('list-item', ListItem);*/
 
 const start = async () => {
     const element = document.getElementById('browser');

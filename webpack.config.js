@@ -1,14 +1,21 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 
+const libraryName = 'digital-gate-v1';
+const outputFile = `${libraryName}.min.js`;
+
 module.exports = {
     entry: [
         'whatwg-fetch',
         './src/app.js'
     ],
     output: {
-        filename: "[name].js",
-        path: path.resolve(__dirname, "dist"),
+        library: libraryName,
+        libraryTarget: 'umd',
+        libraryExport: 'default',
+        path: path.resolve(__dirname, 'dist'),
+        filename: outputFile,
+        assetModuleFilename: 'assets/[hash][ext][query]'
     },
     module: {
         rules: [
@@ -30,9 +37,6 @@ module.exports = {
                 type: 'asset/resource',
             }
         ],
-    },
-    optimization: {
-        splitChunks: {chunks: "all"}
     },
     plugins: [
         new HTMLWebpackPlugin({
