@@ -1,10 +1,11 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require('dotenv-webpack');
 
-const libraryName = 'digital-gate-v2';
+const libraryName = 'babel-demo';
 const outputFile = `${libraryName}.min.js`;
 
-module.exports = {
+module.exports = env => ({
     entry: [
         'whatwg-fetch',
         './src/app.js'
@@ -29,6 +30,10 @@ module.exports = {
                 use: "babel-loader",
             },
             {
+                test: /\.json$/,
+                type: 'asset/resource',
+            },
+            {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
             },
@@ -43,10 +48,13 @@ module.exports = {
             filename: "index.html",
             template: "./index.html",
         }),
+        new Dotenv({
+            path: `./src/environments/.env.${env.target}`
+        }),
     ],
     experiments: {
         topLevelAwait: true,
     },
     target: ['web', 'es5'],
     mode: "development",
-};
+});
